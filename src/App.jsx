@@ -16,11 +16,13 @@ function App() {
           <div className="left">
             <FunctionalApp />
           </div>
+
           <div className="right">
             <ClassApp />
           </div>
         </div>
       </div>
+
       <datalist id="cities">
         {allCities.map((city) => (
           <option key={city}>{city}</option>

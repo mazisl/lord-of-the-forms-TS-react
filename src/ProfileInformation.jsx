@@ -1,4 +1,6 @@
-export const InfoRow = ({ label, value }) => {
+import { capitalize, formatPhoneNumber } from "./utils/transformations";
+
+const InfoRow = ({ label, value }) => {
   return (
     <div>
       <span style={{ marginRight: 5 }}>
@@ -8,6 +10,9 @@ export const InfoRow = ({ label, value }) => {
     </div>
   );
 };
+
+//this is what gets rendered on top as soon as the user submits all valid information in the form input fields
+//this is imported by both functional and class app
 export const ProfileInformation = ({ userData }) => {
   if (!userData) {
     return (
@@ -22,19 +27,20 @@ export const ProfileInformation = ({ userData }) => {
     );
   }
   // eslint-disable-next-line no-unused-vars
-  const { email, firstName, lastName, phone: _phone, city } = userData;
+  const { firstName, lastName, email,  city, phone } = userData;
+
   return (
     <>
       <u>
         <h3>Your Submitted User Information</h3>
       </u>
       <div className="user-info">
+        <InfoRow label="First Name" value={capitalize(firstName)} />
+        <InfoRow label="Last Name" value={capitalize(lastName)} />
         <InfoRow label="Email" value={email} />
-        <InfoRow label="First Name" value={firstName} />
-        <InfoRow label="Last Name" value={lastName} />
         <InfoRow label="City" value={city} />
         {/* You will need to format the string "nnnnnnn" as "nn-nn-nn-n" */}
-        <InfoRow label="Phone" value={"12-34-56-7"} />
+        <InfoRow label="Phone" value={formatPhoneNumber(phone)} />
       </div>
     </>
   );
