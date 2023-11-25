@@ -26,8 +26,8 @@ export const ProfileInformation = ({ userData }) => {
       </>
     );
   }
-  // eslint-disable-next-line no-unused-vars
-  const { firstName, lastName, email,  city, phone } = userData;
+
+  const { firstName, lastName, email, city, phone } = userData;
 
   return (
     <>
@@ -39,7 +39,6 @@ export const ProfileInformation = ({ userData }) => {
         <InfoRow label="Last Name" value={capitalize(lastName)} />
         <InfoRow label="Email" value={email} />
         <InfoRow label="City" value={city} />
-        {/* You will need to format the string "nnnnnnn" as "nn-nn-nn-n" */}
         <InfoRow label="Phone" value={formatPhoneNumber(phone)} />
       </div>
     </>

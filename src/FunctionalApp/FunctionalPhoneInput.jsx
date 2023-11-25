@@ -1,8 +1,7 @@
 import { useRef } from "react";
-import { isNumberKey } from "../utils/validations";
+// import { isNumberKey } from "../utils/validations";
 
-export const PhoneInput = ({phoneInputState, handlePhoneInputState}) => {
-  
+export const PhoneInput = ({ phoneInputState, handlePhoneInputState }) => {
   const refs = [useRef(), useRef(), useRef(), useRef()];
 
   const createOnChangeHandler = (index) => (e) => {
@@ -11,14 +10,14 @@ export const PhoneInput = ({phoneInputState, handlePhoneInputState}) => {
     const nextRef = refs[index + 1];
     const prevRef = refs[index - 1];
     const inputValue = e.target.value;
-    
+
     const shouldGoToNextRef = currentMaxLength === inputValue.length && nextRef;
 
     const shouldGoToPrevRef = inputValue.length === 0 && prevRef;
 
     const newState = phoneInputState.map((phoneInput, phoneInputIndex) => {
-      return index === phoneInputIndex ? inputValue : phoneInput
-    })
+      return index === phoneInputIndex ? inputValue : phoneInput;
+    });
 
     if (shouldGoToNextRef) {
       nextRef.current?.focus();
@@ -28,10 +27,18 @@ export const PhoneInput = ({phoneInputState, handlePhoneInputState}) => {
       prevRef.current?.focus();
     }
 
+    if (
+      [..."abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=-[]{};:\"<,.>?/|\\'"].some(
+        (letter) => newState.includes(letter)
+      )
+    ) {
+      return;
+    }
+
     if (inputValue.length <= currentMaxLength) {
-      handlePhoneInputState(newState)
-    }    
-  }
+      handlePhoneInputState(newState);
+    }
+  };
 
   return (
     <div className="input-wrap">
@@ -41,43 +48,38 @@ export const PhoneInput = ({phoneInputState, handlePhoneInputState}) => {
           id="phone-input-1"
           value={phoneInputState[0]}
           onChange={createOnChangeHandler(0)}
-          onKeyPress={(e) => isNumberKey(e)}
           ref={refs[0]}
           type="text"
-          placeholder='55'
+          placeholder="55"
         />
         -
         <input
           id="phone-input-2"
           value={phoneInputState[1]}
           onChange={createOnChangeHandler(1)}
-          onKeyPress={(e) => isNumberKey(e)}
           ref={refs[1]}
           type="text"
-          placeholder='55'
+          placeholder="55"
         />
         -
         <input
           id="phone-input-3"
           value={phoneInputState[2]}
           onChange={createOnChangeHandler(2)}
-          onKeyPress={(e) => isNumberKey(e)}
           ref={refs[2]}
           type="text"
-          placeholder='55'
+          placeholder="55"
         />
         -
         <input
           id="phone-input-4"
           value={phoneInputState[3]}
           onChange={createOnChangeHandler(3)}
-          onKeyPress={(e) => isNumberKey(e)}
           ref={refs[3]}
           type="text"
-          placeholder='5'
+          placeholder="5"
         />
-      </div>      
-      
-    </div>    
-  )
-}
+      </div>
+    </div>
+  );
+};
