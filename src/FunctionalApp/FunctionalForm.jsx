@@ -119,59 +119,6 @@ export const FunctionalForm = ({ handleUserInfo }) => {
       />
       {showCityError && <ErrorMessage message={cityErrorMessage} />}
 
-      {/* <div className="input-wrap">
-        <label>{"First Name"}:</label>
-        <input 
-          type="text" 
-          value={firstNameInput}
-          onChange={(e) => setFirstNameInput(e.target.value)}
-          placeholder="Bilbo" />
-      </div>
-      {showFirstNameError && (
-        <ErrorMessage message={firstNameErrorMessage} />
-      )}
-
-      
-      <div className="input-wrap">
-        <label>{"Last Name"}:</label>
-        <input
-          type="text" 
-          value={lastNameInput}
-          onChange={(e) => setLastNameInput(e.target.value)} 
-          placeholder="Baggins" />
-      </div>
-      {showLastNameError && (        
-        <ErrorMessage message={lastNameErrorMessage} />
-      )}
-
-      
-      <div className="input-wrap">
-        <label>{"Email"}:</label>
-        <input
-          type="text"
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-         placeholder="bilbo-baggins@adventurehobbits.net" />
-      </div>
-      {showEmailError && (
-        <ErrorMessage message={emailErrorMessage} />
-      )}
-
-      
-      <div className="input-wrap">
-        <label>{"City"}:</label>
-        <input
-          list="cities"
-          type="text" 
-          value={cityInput}
-          onChange={(e) => setCityInput(e.target.value)} 
-          placeholder="Hobbiton" 
-        />        
-      </div>
-      {showCityError && (
-        <ErrorMessage message={cityErrorMessage} />
-      )} */}
-
       {/* phone input */}
       <PhoneInput
         phoneInputState={phoneInputState}
