@@ -1,4 +1,4 @@
-export const allCities = [
+export const allCities: string[] = [
     "Minas Tirith",
     "Agar",
     "Aldburg",

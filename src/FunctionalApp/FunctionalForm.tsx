@@ -8,6 +8,7 @@ import {
   isCityValid,
   isPhoneValid,
 } from "../utils/validations";
+
 import { FunctionalTextInput } from "./FunctionalTextInput";
 import { PhoneInput } from "./FunctionalPhoneInput";
 
@@ -18,12 +19,21 @@ const cityErrorMessage = "City is Invalid";
 const phoneNumberErrorMessage = "Invalid Phone Number";
 
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
-export const FunctionalForm = ({ handleUserInfo }) => {
-  const [firstNameInput, setFirstNameInput] = useState("");
-  const [lastNameInput, setLastNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [cityInput, setCityInput] = useState("");
-  const [phoneInputState, setPhoneInputState] = useState(["", "", "", ""]);
+import { UserInfoType } from "../ProfileInformation";
+
+interface HandleUserInfoProps {
+  handleUserInfo: (updatedUserInfo: UserInfoType) => void;
+}
+
+//TS tuple for initial phoneInputState
+export type PhoneInputState = [string, string, string, string];
+
+export const FunctionalForm = ({ handleUserInfo }: HandleUserInfoProps) => {
+  const [firstNameInput, setFirstNameInput] = useState<string>("");
+  const [lastNameInput, setLastNameInput] = useState<string>("");
+  const [emailInput, setEmailInput] = useState<string>("");
+  const [cityInput, setCityInput] = useState<string>("");
+  const [phoneInputState, setPhoneInputState] = useState<PhoneInputState>(["", "", "", ""]);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -82,7 +92,7 @@ export const FunctionalForm = ({ handleUserInfo }) => {
         label={"First Name"}
         inputProps={{
           value: firstNameInput,
-          onChange: (e) => setFirstNameInput(e.target.value),
+          onChange: (e: React.FormEvent<HTMLInputElement>) => setFirstNameInput(e.currentTarget.value),
           placeholder: "Bilbo",
         }}
       />
@@ -92,7 +102,7 @@ export const FunctionalForm = ({ handleUserInfo }) => {
         label={"Last Name"}
         inputProps={{
           value: lastNameInput,
-          onChange: (e) => setLastNameInput(e.target.value),
+          onChange: (e: React.FormEvent<HTMLInputElement>) => setLastNameInput(e.currentTarget.value),
           placeholder: "Baggins",
         }}
       />
@@ -102,7 +112,7 @@ export const FunctionalForm = ({ handleUserInfo }) => {
         label={"Email"}
         inputProps={{
           value: emailInput,
-          onChange: (e) => setEmailInput(e.target.value),
+          onChange: (e: React.FormEvent<HTMLInputElement>) => setEmailInput(e.currentTarget.value),
           placeholder: "bilbo-baggins@adventurehobbits.net",
         }}
       />
@@ -113,7 +123,7 @@ export const FunctionalForm = ({ handleUserInfo }) => {
         inputProps={{
           list: "cities",
           value: cityInput,
-          onChange: (e) => setCityInput(e.target.value),
+          onChange: (e: React.FormEvent<HTMLInputElement>) => setCityInput(e.currentTarget.value),
           placeholder: "Hobbiton",
         }}
       />

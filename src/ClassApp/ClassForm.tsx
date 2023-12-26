@@ -18,8 +18,14 @@ const emailErrorMessage = "Email is Invalid";
 const cityErrorMessage = "City is Invalid";
 const phoneNumberErrorMessage = "Invalid Phone Number";
 
+import { UserInfoType } from "../ProfileInformation";
+
+interface HandleUserInfoProps {
+  handleUserInfo: (updatedUserInfo: UserInfoType) => void;
+}
+
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
-export class ClassForm extends Component {
+export class ClassForm extends Component<HandleUserInfoProps> {
   state = {
     firstNameInput: "",
     lastNameInput: "",
@@ -102,9 +108,9 @@ export class ClassForm extends Component {
           label={"First Name"}
           inputProps={{
             value: firstNameInput,
-            onChange: (e) =>
+            onChange: (e: React.FormEvent<HTMLInputElement>) =>
               this.setState(() => {
-                return { firstNameInput: e.target.value };
+                return { firstNameInput: e.currentTarget.value };
               }),
             placeholder: "Bilbo",
           }}
@@ -115,9 +121,9 @@ export class ClassForm extends Component {
           label={"Last Name"}
           inputProps={{
             value: lastNameInput,
-            onChange: (e) =>
+            onChange: (e: React.FormEvent<HTMLInputElement>) =>
               this.setState(() => {
-                return { lastNameInput: e.target.value };
+                return { lastNameInput: e.currentTarget.value };
               }),
             placeholder: "Baggins",
           }}
@@ -128,9 +134,9 @@ export class ClassForm extends Component {
           label={"Email"}
           inputProps={{
             value: emailInput,
-            onChange: (e) =>
+            onChange: (e: React.FormEvent<HTMLInputElement>) =>
               this.setState(() => {
-                return { emailInput: e.target.value };
+                return { emailInput: e.currentTarget.value };
               }),
             placeholder: "bilbo-baggins@adventurehobbits.net",
           }}
@@ -142,9 +148,9 @@ export class ClassForm extends Component {
           inputProps={{
             list: "cities",
             value: cityInput,
-            onChange: (e) =>
+            onChange: (e: React.FormEvent<HTMLInputElement>) =>
               this.setState(() => {
-                return { cityInput: e.target.value };
+                return { cityInput: e.currentTarget.value };
               }),
             placeholder: "Hobbiton",
           }}

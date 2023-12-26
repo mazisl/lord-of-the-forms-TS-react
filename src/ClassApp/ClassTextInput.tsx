@@ -1,6 +1,11 @@
-import { Component } from "react";
+import { Component, ReactComponentElement } from "react";
 
-export class ClassTextInput extends Component {
+interface ClassTextInputProps {
+  label: string;
+  inputProps: ReactComponentElement<'input'>
+}
+
+export class ClassTextInput extends Component<ClassTextInputProps> {
   render() {
     const { label, inputProps } = this.props;
 

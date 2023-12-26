@@ -1,23 +1,30 @@
-import { useRef } from "react";
-// import { isNumberKey } from "../utils/validations";
+import { ChangeEventHandler, Dispatch, SetStateAction, useRef } from "react";
 
-export const PhoneInput = ({ phoneInputState, handlePhoneInputState }) => {
-  const refs = [useRef(), useRef(), useRef(), useRef()];
+//TS tuple imported for phoneInputState
+import { PhoneInputState } from "./FunctionalForm";
 
-  const createOnChangeHandler = (index) => (e) => {
+interface PhoneInputProps {
+  phoneInputState: PhoneInputState;
+  handlePhoneInputState: Dispatch<SetStateAction<PhoneInputState>>;
+}
+
+export const PhoneInput = ({ phoneInputState, handlePhoneInputState }: PhoneInputProps) => {
+  const refs = [useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null), useRef<HTMLInputElement>(null)];
+
+  const createOnChangeHandler = (index: 0 | 1 | 2 | 3): ChangeEventHandler<HTMLInputElement> => (e: React.FormEvent<HTMLInputElement>) => {
     const lengths = [2, 2, 2, 1];
     const currentMaxLength = lengths[index];
     const nextRef = refs[index + 1];
     const prevRef = refs[index - 1];
-    const inputValue = e.target.value;
+    const inputValue = e.currentTarget.value;
 
     const shouldGoToNextRef = currentMaxLength === inputValue.length && nextRef;
 
     const shouldGoToPrevRef = inputValue.length === 0 && prevRef;
 
-    const newState = phoneInputState.map((phoneInput, phoneInputIndex) => {
+    const newState = phoneInputState.map((phoneInput, phoneInputIndex): string => {
       return index === phoneInputIndex ? inputValue : phoneInput;
-    });
+    }) as PhoneInputState;
 
     if (shouldGoToNextRef) {
       nextRef.current?.focus();
