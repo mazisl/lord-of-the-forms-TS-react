@@ -34,6 +34,8 @@ type ClassFormState = {
   isSubmitted: boolean;
 }
 
+//in TS we hav to set state directly for onChange events instead of using a func and returning inside state setter
+
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
 export class ClassForm extends Component<ClassFormProps, ClassFormState> {
   state: ClassFormState = {
@@ -118,10 +120,8 @@ export class ClassForm extends Component<ClassFormProps, ClassFormState> {
           label={"First Name"}
           inputProps={{
             value: firstNameInput,
-            onChange: (e: React.FormEvent<HTMLInputElement>) =>
-              this.setState(() => {
-                return { firstNameInput: e.currentTarget.value };
-              }),
+            onChange: (e) =>
+              this.setState({ firstNameInput: e.target.value }),
             placeholder: "Bilbo",
           }}
         />
@@ -131,10 +131,8 @@ export class ClassForm extends Component<ClassFormProps, ClassFormState> {
           label={"Last Name"}
           inputProps={{
             value: lastNameInput,
-            onChange: (e: React.FormEvent<HTMLInputElement>) =>
-              this.setState(() => {
-                return { lastNameInput: e.currentTarget.value };
-              }),
+            onChange: (e) =>
+              this.setState({ lastNameInput: e.target.value }),
             placeholder: "Baggins",
           }}
         />
@@ -144,10 +142,8 @@ export class ClassForm extends Component<ClassFormProps, ClassFormState> {
           label={"Email"}
           inputProps={{
             value: emailInput,
-            onChange: (e: React.FormEvent<HTMLInputElement>) =>
-              this.setState(() => {
-                return { emailInput: e.currentTarget.value };
-              }),
+            onChange: (e) =>
+              this.setState({ emailInput: e.target.value }),
             placeholder: "bilbo-baggins@adventurehobbits.net",
           }}
         />
@@ -158,10 +154,8 @@ export class ClassForm extends Component<ClassFormProps, ClassFormState> {
           inputProps={{
             list: "cities",
             value: cityInput,
-            onChange: (e: React.FormEvent<HTMLInputElement>) =>
-              this.setState(() => {
-                return { cityInput: e.currentTarget.value };
-              }),
+            onChange: (e) =>
+              this.setState({ cityInput: e.target.value }),
             placeholder: "Hobbiton",
           }}
         />
