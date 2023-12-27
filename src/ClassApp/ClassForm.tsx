@@ -36,7 +36,7 @@ type ClassFormState = {
 
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
 export class ClassForm extends Component<ClassFormProps, ClassFormState> {
-  state = {
+  state: ClassFormState = {
     firstNameInput: "",
     lastNameInput: "",
     emailInput: "",
