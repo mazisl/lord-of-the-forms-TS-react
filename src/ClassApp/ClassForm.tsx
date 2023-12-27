@@ -18,14 +18,24 @@ const emailErrorMessage = "Email is Invalid";
 const cityErrorMessage = "City is Invalid";
 const phoneNumberErrorMessage = "Invalid Phone Number";
 
-import { UserInfoType } from "../ProfileInformation";
+import type { UserInfoType } from "../ProfileInformation";
+import type { PhoneInputState } from "../types";
 
-interface HandleUserInfoProps {
+interface ClassFormProps {
   handleUserInfo: (updatedUserInfo: UserInfoType) => void;
 }
 
+type ClassFormState = {
+  firstNameInput: string;
+  lastNameInput: string;
+  emailInput: string;
+  cityInput: string;
+  phoneInputState: PhoneInputState;
+  isSubmitted: boolean;
+}
+
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
-export class ClassForm extends Component<HandleUserInfoProps> {
+export class ClassForm extends Component<ClassFormProps, ClassFormState> {
   state = {
     firstNameInput: "",
     lastNameInput: "",

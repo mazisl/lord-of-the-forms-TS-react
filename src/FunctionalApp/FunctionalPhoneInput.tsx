@@ -1,7 +1,7 @@
 import { ChangeEventHandler, Dispatch, SetStateAction, useRef } from "react";
 
 //TS tuple imported for phoneInputState
-import { PhoneInputState } from "./FunctionalForm";
+import type { PhoneInputState } from '../types';
 
 interface PhoneInputProps {
   phoneInputState: PhoneInputState;

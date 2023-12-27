@@ -1,8 +1,8 @@
-import { Component, ReactComponentElement } from "react";
+import { Component, ComponentProps} from "react";
 
 interface ClassTextInputProps {
   label: string;
-  inputProps: ReactComponentElement<'input'>
+  inputProps: ComponentProps<'input'>
 }
 
 export class ClassTextInput extends Component<ClassTextInputProps> {

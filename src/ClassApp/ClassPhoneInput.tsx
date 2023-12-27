@@ -1,8 +1,7 @@
 import { Component, createRef } from "react";
 // import { isNumberKey } from "../utils/validations";
 
-// import { PhoneInputState } from "./ClassForm";
-type PhoneInputState = [string, string, string, string];
+import type { PhoneInputState } from '../types';
 
 interface PhoneInputProps {
   phoneInputState: PhoneInputState;
@@ -29,7 +28,7 @@ export class PhoneInput extends Component<PhoneInputProps> {
 
       const newState = phoneInputState.map((phoneInput: string, phoneInputIndex: number): string => {
         return index === phoneInputIndex ? inputValue : phoneInput;
-      })as PhoneInputState;
+      }) as PhoneInputState;
 
       if (shouldGoToNextRef) {
         nextRef.current?.focus();

@@ -19,16 +19,16 @@ const cityErrorMessage = "City is Invalid";
 const phoneNumberErrorMessage = "Invalid Phone Number";
 
 //this is the form section with labels and inputs along with error msgs in case of invalid entry
-import { UserInfoType } from "../ProfileInformation";
+import type { UserInfoType } from "../ProfileInformation";
 
-interface HandleUserInfoProps {
+interface FunctionalFormProps {
   handleUserInfo: (updatedUserInfo: UserInfoType) => void;
 }
 
 //TS tuple for initial phoneInputState
-export type PhoneInputState = [string, string, string, string];
+import type { PhoneInputState } from "../types";
 
-export const FunctionalForm = ({ handleUserInfo }: HandleUserInfoProps) => {
+export const FunctionalForm = ({ handleUserInfo }: FunctionalFormProps) => {
   const [firstNameInput, setFirstNameInput] = useState<string>("");
   const [lastNameInput, setLastNameInput] = useState<string>("");
   const [emailInput, setEmailInput] = useState<string>("");
