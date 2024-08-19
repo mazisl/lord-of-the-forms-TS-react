@@ -29,6 +29,7 @@ interface FunctionalFormProps {
 import type { PhoneInputState } from "../types";
 
 export const FunctionalForm = ({ handleUserInfo }: FunctionalFormProps) => {
+  
   const [firstNameInput, setFirstNameInput] = useState<string>("");
   const [lastNameInput, setLastNameInput] = useState<string>("");
   const [emailInput, setEmailInput] = useState<string>("");
