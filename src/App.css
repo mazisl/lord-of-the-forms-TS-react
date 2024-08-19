@@ -94,11 +94,11 @@ h1 {
 .forms-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5.5px;
 }
 
 .user-info {
   border: 5px solid black;
-  padding: 6px;
+  padding: 5.5px;
   width: 400px;
 }
